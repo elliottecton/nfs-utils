@@ -284,11 +284,25 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 	struct addrinfo *ai1, *ai2, *results1 = NULL, *results2 = NULL;
 	_Bool result = false;
 
+	/**
+	 * Compares two hostnames and checks if they are equal.
+	 *
+	 * @param hostname1 The first hostname to compare.
+	 * @param hostname2 The second hostname to compare.
+	 * @return true if the hostnames are equal, false otherwise.
+	 */
 	if (strcasecmp(hostname1, hostname2) == 0) {
 		result = true;
 		goto out;
 	}
 
+	/**
+	 * Perform a canonical list lookup for the given hostnames.
+	 * 
+	 * @param hostname1 The first hostname to lookup.
+	 * @param hostname2 The second hostname to lookup.
+	 * @return A pointer to the canonical list if successful, NULL otherwise.
+	 */
 	results1 = statd_canonical_list(hostname1);
 	if (results1 == NULL)
 		goto out;
@@ -303,6 +317,9 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 
 	for (ai1 = results1; ai1 != NULL; ai1 = ai1->ai_next)
 		for (ai2 = results2; ai2 != NULL; ai2 = ai2->ai_next)
+		/* POOR MAN DEBUG by Elliott: Print ai1 and ai2*/
+		printf("ai1: %s\n", ai1->ai_canonname);
+		printf("ai2: %s\n", ai2->ai_canonname);
 			if (nfs_compare_sockaddr(ai1->ai_addr, ai2->ai_addr)) {
 				result = true;
 				break;

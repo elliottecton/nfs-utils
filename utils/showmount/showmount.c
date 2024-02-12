@@ -1,3 +1,33 @@
+/**
+ * showmount.c -- show mount information for an NFS server
+ * 
+ * This program retrieves and displays mount information for an NFS server.
+ * It can display the list of exported directories, hosts that have mounted
+ * directories, or the list of directories mounted on a specific host.
+ * 
+ * Usage: showmount [-adehv]
+ *        [--all] [--directories] [--exports]
+ *        [--no-headers] [--help] [--version] [host]
+ * 
+ * Options:
+ *   -a, --all          Display all mount points on the host
+ *   -d, --directories  Display only the directories on the host
+ *   -e, --exports      Display the list of exported directories on the host
+ *   --no-headers       Do not display headers in the output
+ *   --help             Display usage information
+ *   --version          Display the version of the program
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * Author: Rick Sladkey <jrs@world.std.com>
+ */
 /*
  * showmount.c -- show mount information for an NFS server
  * Copyright (C) 1993 Rick Sladkey <jrs@world.std.com>
