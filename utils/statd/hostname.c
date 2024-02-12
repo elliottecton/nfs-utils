@@ -317,8 +317,8 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 
 	for (ai1 = results1; ai1 != NULL; ai1 = ai1->ai_next) {
 		for (ai2 = results2; ai2 != NULL; ai2 = ai2->ai_next) {
-			printf("ai1->ai_addr: %s\n", sockaddr_to_string(ai1->ai_addr));
-			printf("ai2->ai_addr: %s\n", sockaddr_to_string(ai2->ai_addr));
+			printf("ai1->ai_addr: %s\n", ai1->ai_addr);
+			printf("ai2->ai_addr: %s\n", ai2->ai_addr);
 			if (nfs_compare_sockaddr(ai1->ai_addr, ai2->ai_addr)) {
 				result = true;
 				break;
