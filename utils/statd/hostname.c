@@ -335,7 +335,7 @@ out:
 	nfs_freeaddrinfo(results2);
 	nfs_freeaddrinfo(results1);
 
-	xlog(D_CALL, "%s: hostnames %s and %s %s", __func__,
+	xlog(D_CALL, "%s: ELLIOTT ECTON: hostnames %s and %s %s", __func__,
 			hostname1, hostname2,
 			(result ? "matched" : "did not match"));
 	return result;
