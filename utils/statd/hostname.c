@@ -283,7 +283,8 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 {
 	struct addrinfo *ai1, *ai2, *results1 = NULL, *results2 = NULL;
 	_Bool result = false;
-
+	xlog(D_CALL, "ELLIOTT ECTON: Entered %s", __func__,));
+	
 	/**
 	 * Compares two hostnames and checks if they are equal.
 	 *
@@ -318,7 +319,7 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 		result = true;
 		goto out;
 	}
-	
+
 	for (ai1 = results1; ai1 != NULL; ai1 = ai1->ai_next) {
 		for (ai2 = results2; ai2 != NULL; ai2 = ai2->ai_next) {
 			printf("ai1->ai_addr: %s\n", (char*) ai1->ai_addr);
