@@ -283,8 +283,8 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 {
 	struct addrinfo *ai1, *ai2, *results1 = NULL, *results2 = NULL;
 	_Bool result = false;
-	xlog(D_CALL, "ELLIOTT ECTON: Entered %s", __func__,));
-	
+	xlog(D_CALL, "ELLIOTT ECTON: Entered %s", __func__,);
+
 	/**
 	 * Compares two hostnames and checks if they are equal.
 	 *
@@ -306,7 +306,7 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 	 */
 	results1 = statd_canonical_list(hostname1);
 	if (results1 == NULL) {
-		printf("ELLIOTT ECTON: %s: results1 is NULL\n", __func__)
+		printf("ELLIOTT ECTON: %s: results1 is NULL\n", __func__);
 		goto out;
 	}
 	results2 = statd_canonical_list(hostname2);
@@ -315,7 +315,7 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 		goto out;
 	}
 	if (strcasecmp(results1->ai_canonname, results2->ai_canonname) == 0) {
-		printf("ELLIOTT ECTON: %s: %s and %s canonnames match\n", __func__, results1->ai_canonname, results2->ai_canonname)
+		printf("ELLIOTT ECTON: %s: %s and %s canonnames match\n", __func__, results1->ai_canonname, results2->ai_canonname);
 		result = true;
 		goto out;
 	}
