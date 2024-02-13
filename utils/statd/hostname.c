@@ -304,17 +304,21 @@ statd_matchhostname(const char *hostname1, const char *hostname2)
 	 * @return A pointer to the canonical list if successful, NULL otherwise.
 	 */
 	results1 = statd_canonical_list(hostname1);
-	if (results1 == NULL)
+	if (results1 == NULL) {
+		printf("ELLIOTT ECTON: %s: results1 is NULL\n", __func__)
 		goto out;
+	}
 	results2 = statd_canonical_list(hostname2);
-	if (results2 == NULL)
+	if (results2 == NULL) {
+		printf("ELLIOTT ECTON: %s: results2 is NULL\n", __func__);
 		goto out;
-
+	}
 	if (strcasecmp(results1->ai_canonname, results2->ai_canonname) == 0) {
+		printf("ELLIOTT ECTON: %s: %s and %s canonnames match\n", __func__, results1->ai_canonname, results2->ai_canonname)
 		result = true;
 		goto out;
 	}
-
+	
 	for (ai1 = results1; ai1 != NULL; ai1 = ai1->ai_next) {
 		for (ai2 = results2; ai2 != NULL; ai2 = ai2->ai_next) {
 			printf("ai1->ai_addr: %s\n", (char*) ai1->ai_addr);
